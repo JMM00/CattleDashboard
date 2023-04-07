@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/swift,swiftpackagemanager,swiftpm
-# Edit at https://www.toptal.com/developers/gitignore?templates=swift,swiftpackagemanager,swiftpm
+# Created by https://www.toptal.com/developers/gitignore/api/swift
+# Edit at https://www.toptal.com/developers/gitignore?templates=swift
 
 ### Swift ###
 # Xcode
@@ -85,18 +85,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-### SwiftPackageManager ###
-Packages
-xcuserdata
-*.xcodeproj
-
-
-### SwiftPM ###
-
-### Firebase ###
-GoogleService-Info.plist
-
-### Service key ###
-APIServiceKey.plist
-
-# End of https://www.toptal.com/developers/gitignore/api/swift,swiftpackagemanager,swiftpm
+# End of https://www.toptal.com/developers/gitignore/api/swift
