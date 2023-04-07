@@ -93,5 +93,8 @@ xcuserdata
 
 ### SwiftPM ###
 
+### Firebase ###
+GoogleService-Info.plist
+
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,swiftpackagemanager,swiftpm
