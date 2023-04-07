@@ -20,6 +20,8 @@
 		F96C47E429E017ED00A0FC30 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F96C47E329E017ED00A0FC30 /* FirebaseRemoteConfigSwift */; };
 		F96C47E629E017ED00A0FC30 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F96C47E529E017ED00A0FC30 /* FirebaseStorage */; };
 		F96C47E829E017ED00A0FC30 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F96C47E729E017ED00A0FC30 /* FirebaseStorageCombine-Community */; };
+		F96C47EA29E0186D00A0FC30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F96C47E929E0186D00A0FC30 /* GoogleService-Info.plist */; };
+		F96C47EC29E0193400A0FC30 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47EB29E0193400A0FC30 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		F96C47A429E0116400A0FC30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F96C47A629E0116500A0FC30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F96C47A929E0116500A0FC30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F96C47E929E0186D00A0FC30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F96C47EB29E0193400A0FC30 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +73,10 @@
 		F96C47A129E0116400A0FC30 /* CattleClient */ = {
 			isa = PBXGroup;
 			children = (
+				F96C47E929E0186D00A0FC30 /* GoogleService-Info.plist */,
 				F96C47A229E0116400A0FC30 /* CattleClientApp.swift */,
 				F96C47A429E0116400A0FC30 /* ContentView.swift */,
+				F96C47EB29E0193400A0FC30 /* ImagePicker.swift */,
 				F96C47A629E0116500A0FC30 /* Assets.xcassets */,
 				F96C47A829E0116500A0FC30 /* Preview Content */,
 			);
@@ -159,6 +165,7 @@
 			files = (
 				F96C47AA29E0116500A0FC30 /* Preview Assets.xcassets in Resources */,
 				F96C47A729E0116500A0FC30 /* Assets.xcassets in Resources */,
+				F96C47EA29E0186D00A0FC30 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96C47EC29E0193400A0FC30 /* ImagePicker.swift in Sources */,
 				F96C47A529E0116400A0FC30 /* ContentView.swift in Sources */,
 				F96C47A329E0116400A0FC30 /* CattleClientApp.swift in Sources */,
 			);

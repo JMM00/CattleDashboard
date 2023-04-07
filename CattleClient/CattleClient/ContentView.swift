@@ -8,12 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var entityNumber = ""
+    
+    @State private var showingImagePicker = false
+    @State var pickedImage: Image?
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            HStack {
+                Text("개체번호")
+                TextField("개체번호", text: $entityNumber)
+            }
+            HStack {
+                Text("사진 선택하기")
+                TextField("개체번호", text: $entityNumber)
+            }
+            
+            Button(action: {
+                self.showingImagePicker.toggle()
+            }, label: {
+                Text("사진 선택하기")
+            }).sheet(isPresented: $showingImagePicker) {
+                ImagePicker(sourceType: .photoLibrary) { (image) in
+                    
+                    self.pickedImage = Image(uiImage: image)
+                    print(image)
+                }
+            }
+            pickedImage?.resizable()
+                .frame(height:300)
         }
         .padding()
     }
