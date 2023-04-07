@@ -11,6 +11,7 @@
 		F96C47BF29E0118400A0FC30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47BE29E0118400A0FC30 /* ContentView.swift */; };
 		F96C47C129E0118500A0FC30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96C47C029E0118500A0FC30 /* Assets.xcassets */; };
 		F96C47C429E0118500A0FC30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96C47C329E0118500A0FC30 /* Preview Assets.xcassets */; };
+		F96C47CC29E011FA00A0FC30 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = F96C47CB29E011FA00A0FC30 /* XMLCoder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96C47CC29E011FA00A0FC30 /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = CattleDashboard;
+			packageProductDependencies = (
+				F96C47CB29E011FA00A0FC30 /* XMLCoder */,
+			);
 			productName = CattleDashboard;
 			productReference = F96C47B929E0118400A0FC30 /* CattleDashboard.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = F96C47B029E0118400A0FC30;
+			packageReferences = (
+				F96C47CA29E011FA00A0FC30 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+			);
 			productRefGroup = F96C47BA29E0118400A0FC30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,6 +347,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F96C47CA29E011FA00A0FC30 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F96C47CB29E011FA00A0FC30 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F96C47CA29E011FA00A0FC30 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F96C47B129E0118400A0FC30 /* Project object */;
 }
