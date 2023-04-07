@@ -12,6 +12,8 @@
 		F96C47C129E0118500A0FC30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96C47C029E0118500A0FC30 /* Assets.xcassets */; };
 		F96C47C429E0118500A0FC30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96C47C329E0118500A0FC30 /* Preview Assets.xcassets */; };
 		F96C47CC29E011FA00A0FC30 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = F96C47CB29E011FA00A0FC30 /* XMLCoder */; };
+		F96C47D229E0149700A0FC30 /* APIServiceKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = F96C47D129E0149700A0FC30 /* APIServiceKey.plist */; };
+		F96C47D429E0152C00A0FC30 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47D329E0152C00A0FC30 /* Bundle+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		F96C47BE29E0118400A0FC30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F96C47C029E0118500A0FC30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F96C47C329E0118500A0FC30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F96C47D129E0149700A0FC30 /* APIServiceKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIServiceKey.plist; sourceTree = "<group>"; };
+		F96C47D329E0152C00A0FC30 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 			children = (
 				F96C47BC29E0118400A0FC30 /* CattleDashboardApp.swift */,
 				F96C47BE29E0118400A0FC30 /* ContentView.swift */,
+				F96C47D129E0149700A0FC30 /* APIServiceKey.plist */,
+				F96C47D329E0152C00A0FC30 /* Bundle+Extension.swift */,
 				F96C47C029E0118500A0FC30 /* Assets.xcassets */,
 				F96C47C229E0118500A0FC30 /* Preview Content */,
 			);
@@ -135,6 +141,7 @@
 			files = (
 				F96C47C429E0118500A0FC30 /* Preview Assets.xcassets in Resources */,
 				F96C47C129E0118500A0FC30 /* Assets.xcassets in Resources */,
+				F96C47D229E0149700A0FC30 /* APIServiceKey.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F96C47BF29E0118400A0FC30 /* ContentView.swift in Sources */,
+				F96C47D429E0152C00A0FC30 /* Bundle+Extension.swift in Sources */,
 				F96C47BD29E0118400A0FC30 /* CattleDashboardApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
