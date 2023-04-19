@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F9411C1429E3EE41006B7BEC /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9411C1329E3EE41006B7BEC /* DashboardView.swift */; };
+		F9411C1729E3F6D0006B7BEC /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = F9411C1629E3F6D0006B7BEC /* SwiftPieChart */; };
 		F96C47BD29E0118400A0FC30 /* CattleDashboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47BC29E0118400A0FC30 /* CattleDashboardApp.swift */; };
 		F96C47BF29E0118400A0FC30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47BE29E0118400A0FC30 /* ContentView.swift */; };
 		F96C47C129E0118500A0FC30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96C47C029E0118500A0FC30 /* Assets.xcassets */; };
@@ -14,9 +16,18 @@
 		F96C47CC29E011FA00A0FC30 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = F96C47CB29E011FA00A0FC30 /* XMLCoder */; };
 		F96C47D229E0149700A0FC30 /* APIServiceKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = F96C47D129E0149700A0FC30 /* APIServiceKey.plist */; };
 		F96C47D429E0152C00A0FC30 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47D329E0152C00A0FC30 /* Bundle+Extension.swift */; };
+		F96C47EE29E02F1C00A0FC30 /* HistoryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47ED29E02F1C00A0FC30 /* HistoryDataManager.swift */; };
+		F96C47F029E02F5500A0FC30 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47EF29E02F5500A0FC30 /* Model.swift */; };
+		F99B360C29F0713E00ECC247 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B360B29F0713E00ECC247 /* Date+Extension.swift */; };
+		F99B360E29F0853700ECC247 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B360D29F0853700ECC247 /* Color+Extension.swift */; };
+		F99B361029F0910000ECC247 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99B360F29F0910000ECC247 /* Font+Extension.swift */; };
+		F9B282D229E95558000968A2 /* PriceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B282D129E95558000968A2 /* PriceDataManager.swift */; };
+		F9B282D429E955DD000968A2 /* PriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B282D329E955DD000968A2 /* PriceModel.swift */; };
+		F9B282D629E9564F000968A2 /* TestContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B282D529E9564F000968A2 /* TestContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F9411C1329E3EE41006B7BEC /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		F96C47B929E0118400A0FC30 /* CattleDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CattleDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96C47BC29E0118400A0FC30 /* CattleDashboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CattleDashboardApp.swift; sourceTree = "<group>"; };
 		F96C47BE29E0118400A0FC30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -24,6 +35,15 @@
 		F96C47C329E0118500A0FC30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F96C47D129E0149700A0FC30 /* APIServiceKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIServiceKey.plist; sourceTree = "<group>"; };
 		F96C47D329E0152C00A0FC30 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		F96C47ED29E02F1C00A0FC30 /* HistoryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDataManager.swift; sourceTree = "<group>"; };
+		F96C47EF29E02F5500A0FC30 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F99B360B29F0713E00ECC247 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		F99B360D29F0853700ECC247 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		F99B360F29F0910000ECC247 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		F9B282D129E95558000968A2 /* PriceDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDataManager.swift; sourceTree = "<group>"; };
+		F9B282D329E955DD000968A2 /* PriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceModel.swift; sourceTree = "<group>"; };
+		F9B282D529E9564F000968A2 /* TestContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContentView.swift; sourceTree = "<group>"; };
+		F9B282D729E95886000968A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9411C1729E3F6D0006B7BEC /* SwiftPieChart in Frameworks */,
 				F96C47CC29E011FA00A0FC30 /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,8 +78,18 @@
 		F96C47BB29E0118400A0FC30 /* CattleDashboard */ = {
 			isa = PBXGroup;
 			children = (
+				F9B282D729E95886000968A2 /* Info.plist */,
 				F96C47BC29E0118400A0FC30 /* CattleDashboardApp.swift */,
 				F96C47BE29E0118400A0FC30 /* ContentView.swift */,
+				F9B282D529E9564F000968A2 /* TestContentView.swift */,
+				F9411C1329E3EE41006B7BEC /* DashboardView.swift */,
+				F96C47ED29E02F1C00A0FC30 /* HistoryDataManager.swift */,
+				F9B282D129E95558000968A2 /* PriceDataManager.swift */,
+				F96C47EF29E02F5500A0FC30 /* Model.swift */,
+				F99B360B29F0713E00ECC247 /* Date+Extension.swift */,
+				F99B360F29F0910000ECC247 /* Font+Extension.swift */,
+				F99B360D29F0853700ECC247 /* Color+Extension.swift */,
+				F9B282D329E955DD000968A2 /* PriceModel.swift */,
 				F96C47D129E0149700A0FC30 /* APIServiceKey.plist */,
 				F96C47D329E0152C00A0FC30 /* Bundle+Extension.swift */,
 				F96C47C029E0118500A0FC30 /* Assets.xcassets */,
@@ -93,6 +124,7 @@
 			name = CattleDashboard;
 			packageProductDependencies = (
 				F96C47CB29E011FA00A0FC30 /* XMLCoder */,
+				F9411C1629E3F6D0006B7BEC /* SwiftPieChart */,
 			);
 			productName = CattleDashboard;
 			productReference = F96C47B929E0118400A0FC30 /* CattleDashboard.app */;
@@ -124,6 +156,7 @@
 			mainGroup = F96C47B029E0118400A0FC30;
 			packageReferences = (
 				F96C47CA29E011FA00A0FC30 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+				F9411C1529E3F6D0006B7BEC /* XCRemoteSwiftPackageReference "SwiftPieChart" */,
 			);
 			productRefGroup = F96C47BA29E0118400A0FC30 /* Products */;
 			projectDirPath = "";
@@ -152,9 +185,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96C47F029E02F5500A0FC30 /* Model.swift in Sources */,
+				F9411C1429E3EE41006B7BEC /* DashboardView.swift in Sources */,
+				F99B361029F0910000ECC247 /* Font+Extension.swift in Sources */,
 				F96C47BF29E0118400A0FC30 /* ContentView.swift in Sources */,
+				F96C47EE29E02F1C00A0FC30 /* HistoryDataManager.swift in Sources */,
 				F96C47D429E0152C00A0FC30 /* Bundle+Extension.swift in Sources */,
+				F99B360C29F0713E00ECC247 /* Date+Extension.swift in Sources */,
 				F96C47BD29E0118400A0FC30 /* CattleDashboardApp.swift in Sources */,
+				F9B282D229E95558000968A2 /* PriceDataManager.swift in Sources */,
+				F9B282D429E955DD000968A2 /* PriceModel.swift in Sources */,
+				F99B360E29F0853700ECC247 /* Color+Extension.swift in Sources */,
+				F9B282D629E9564F000968A2 /* TestContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +257,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -268,7 +310,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -286,11 +328,12 @@
 				DEVELOPMENT_TEAM = L3A22T43UF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CattleDashboard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +343,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -315,11 +358,12 @@
 				DEVELOPMENT_TEAM = L3A22T43UF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CattleDashboard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -329,7 +373,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -357,6 +401,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F9411C1529E3F6D0006B7BEC /* XCRemoteSwiftPackageReference "SwiftPieChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ilamanov/SwiftPieChart";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		F96C47CA29E011FA00A0FC30 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
@@ -368,6 +420,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F9411C1629E3F6D0006B7BEC /* SwiftPieChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9411C1529E3F6D0006B7BEC /* XCRemoteSwiftPackageReference "SwiftPieChart" */;
+			productName = SwiftPieChart;
+		};
 		F96C47CB29E011FA00A0FC30 /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F96C47CA29E011FA00A0FC30 /* XCRemoteSwiftPackageReference "XMLCoder" */;

@@ -11,7 +11,8 @@ import SwiftUI
 struct CattleDashboardApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DashboardView()
+//            TestContentView()
         }
     }
 }
