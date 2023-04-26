@@ -44,9 +44,7 @@ class PriceDataManager: ObservableObject {
     }
     
     init() {
-        print("priceModel init")
         dateArray = getMonthDate()
-        print(dateArray)
     }
     
     func getMonthDate() -> [String] {

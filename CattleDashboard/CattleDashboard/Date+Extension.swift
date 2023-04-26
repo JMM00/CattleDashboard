@@ -18,4 +18,12 @@ extension Date {
         
         return formatter.string(from: self)
     }
+    func getTime() -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_kr")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        formatter.dateFormat = "yy.MM.dd. HH:mm:ss"
+        
+        return formatter.string(from: self)
+    }
 }

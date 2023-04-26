@@ -10,20 +10,18 @@ import Charts
 import SwiftPieChart
 
 struct DashboardView: View {
+    
+    @EnvironmentObject var priceManager: PriceDataManager
+    @EnvironmentObject var historyManager: HistoryDataManager
+    @EnvironmentObject var infoViewModel: InfoViewModel
+    
     let data: [(Double, Color)] = [
-                (2, .red),
-                (3, .orange),
-                (4, .yellow),
-                (1, .green),
-                (5, .blue),
-                (4, .indigo),
-                (2, .purple)
+                (128, .chart2)
             ]
     
-    @StateObject var priceManager = PriceDataManager()
     var body: some View {
         GeometryReader { screen in
-            VStack {
+            VStack(spacing: 10) {
                 HStack {
                     VStack{
                         HStack(spacing: 20) {
@@ -91,7 +89,8 @@ struct DashboardView: View {
                         ChartView_week(screen: screen.size, postings: priceManager.priceArr_0)
                     }
                     .onAppear() {
-                        priceManager.getSearchResults()
+//                        priceManager.getSearchResults()
+                        historyManager.getCattleResults(cattleNo: "002142700199")
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(.horizontal, 34)
@@ -104,7 +103,6 @@ struct DashboardView: View {
                         ))
                     
                 }
-                .padding(.vertical, 50)
                 
                 HStack {
                     GradeView(screen: screen.size)
@@ -132,9 +130,13 @@ struct DashboardView: View {
                             Spacer()
                         }
                         .padding(.vertical, 5)
-                        ProgressView(screen: screen.size, slices: data)
-                        Text("23.04.09  13:11:54")
-                            .font(.Dash.title3)
+                        ZStack(alignment: .center) {
+                            Circle().foregroundColor(.chart1)
+                            ProgressView(screen: screen.size, slices: data)
+                        }
+                        .padding(.top, 20)
+                        Text(Date().getTime())
+                            .font(.Dash.title25)
                             .foregroundColor(.red)
                             .padding(7)
                             .frame(maxWidth: .infinity)
@@ -155,14 +157,18 @@ struct DashboardView: View {
                                 .strokeBorder(Color.border, lineWidth: 4)
                         ))
                 }
-                .padding(.bottom, 50)
+                .background(Color.red)
+                .padding(.bottom, 20)
             }
+            .padding(20)
         }
         .background(Color.background)
     }
 }
 
 struct HistoryView: View {
+    @EnvironmentObject var historyManager: HistoryDataManager
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("축산물 이력")
@@ -182,11 +188,16 @@ struct HistoryView: View {
                     .frame(width: 75)
                 Spacer()
                 VStack {
-                    Text("출생")
-                    Text("18.09.04")
-                        .foregroundColor(.systemBlue)
-                    Text("전북 부안군 보안면")
-                        .foregroundColor(.systemBlue)
+                    if historyManager.cattleEntityInfo.count != 0 {
+                        Text("출생")
+                        Text(String(historyManager.cattleEntityInfo[0].birthYmd))
+                            .foregroundColor(.systemBlue)
+                        Text(historyManager.cattleEntityInfo[0].farmAddr)
+                            .foregroundColor(.systemBlue)
+                    }
+                }
+                .onAppear() {
+                    print(historyManager.entityInfo.count)
                 }
                 Spacer()
             }
@@ -197,12 +208,14 @@ struct HistoryView: View {
                     .scaledToFit()
                     .frame(width: 75)
                 Spacer()
-                VStack {
-                    Text("도축일자")
-                    Text("21.04.16")
-                        .foregroundColor(.systemBlue)
+                if historyManager.cattleEntityInfo.count != 0 {
+                    VStack {
+                        Text("도축일자")
+                        Text(String(historyManager.cattleEntityInfo[0].butcheryYmd))
+                            .foregroundColor(.systemBlue)
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
             
             HStack {
@@ -212,21 +225,24 @@ struct HistoryView: View {
                     .frame(width: 75)
                 
                 Spacer()
-                HStack {
-                    VStack {
-                        Text("구제역")
-                        Text("5차")
-                            .foregroundColor(.systemBlue)
-                    }
-                    VStack {
-                        Text("구제역")
-                        Text("5차")
-                            .foregroundColor(.systemBlue)
-                    }
-                    VStack {
-                        Text("구제역")
-                        Text("5차")
-                            .foregroundColor(.systemBlue)
+                
+                if historyManager.cattleEntityInfo.count != 0 {
+                    HStack(spacing: 20){
+                        VStack {
+                            Text("구제역")
+                            Text(historyManager.cattleEntityInfo[0].vaccineorder)
+                                .foregroundColor(.systemBlue)
+                        }
+                        VStack {
+                            Text("결핵")
+                            Text(historyManager.cattleEntityInfo[0].inspectDesc)
+                                .foregroundColor(.systemBlue)
+                        }
+                        VStack {
+                            Text("브루셀라")
+                            Text(historyManager.cattleEntityInfo[0].inspectYn)
+                                .foregroundColor(.systemBlue)
+                        }
                     }
                 }
                 Spacer()
@@ -243,50 +259,11 @@ struct HistoryView: View {
     }
 }
 
-struct HistoryCellView: View {
-    var body: some View {
-        HStack {
-            Image("birth")
-            
-            VStack {
-                Text("출생")
-                Text("18.09.04")
-                Text("전북 부안군 보안면")
-            }
-        }
-        VStack {
-            List {
-                HStack{
-                    Text("신고구분")
-                    Text("일자")
-                    Text("농장경영자")
-                    Text("사육지")
-                }
-                HStack{
-                    Text("출생")
-                    Text("2018.09.04")
-                    Text("이덕만")
-                    Text("전북 부안군 보안면")
-                }
-                HStack{
-                    Text("출생")
-                    Text("2018.09.04")
-                    Text("이덕만")
-                    Text("전북 부안군 보안면")
-                }
-                HStack{
-                    Text("출생")
-                    Text("2018.09.04")
-                    Text("이덕만")
-                    Text("전북 부안군 보안면")
-                }
-            }
-        }
-    }
-}
-
 struct DefaultInfoView: View {
+    @EnvironmentObject var historyManager: HistoryDataManager
+    @EnvironmentObject var infoViewModel: InfoViewModel
     let screen: CGSize
+    
     var body: some View {
         VStack(spacing: 8) {
             Text("도체 기본정보")
@@ -300,18 +277,20 @@ struct DefaultInfoView: View {
                             .strokeBorder(Color.border, lineWidth: 2)
                     ))
                 .padding(8)
-            VStack {
-                DefaultViewCell(title: "지육번호", content: "61번", type: .other)
-                DefaultViewCell(title: "품종", content: "한우", type: .other)
-                DefaultViewCell(title: "성별", content: "거세", type: .other)
-                DefaultViewCell(title: "개월령", content: "32", type: .month)
-                DefaultViewCell(title: "총중량", content: "486", type: .kg)
-                DefaultViewCell(title: "예측정육률", content: "66.24", type: .percent)
-                DefaultViewCell(title: "단가", content: "35,270", type: .pricePerKg)
-                DefaultViewCell(title: "매수", content: "1", type: .other)
+            if infoViewModel.defaultInfo.count != 0 {
+                VStack {
+                    DefaultViewCell(title: "지육번호", content: infoViewModel.defaultInfo[0].number, type: .number)
+                    DefaultViewCell(title: "품종", content: historyManager.cattleEntityInfo[0].lsTypeNm, type: .other)
+                    DefaultViewCell(title: "성별", content: historyManager.cattleEntityInfo[0].sexNm, type: .other)
+                    DefaultViewCell(title: "개월령", content: infoViewModel.defaultInfo[0].month, type: .month)
+                    DefaultViewCell(title: "총중량", content: infoViewModel.defaultInfo[0].totalWeight, type: .kg)
+                    DefaultViewCell(title: "예측정육률", content: infoViewModel.defaultInfo[0].predictedBreedingRate, type: .percent)
+                    DefaultViewCell(title: "단가", content: infoViewModel.defaultInfo[0].unitPrice, type: .pricePerKg)
+                    DefaultViewCell(title: "매수", content: infoViewModel.defaultInfo[0].buying, type: .other)
+                }
+                .padding(.leading, 20)
+                .padding(.vertical, 10)
             }
-            .padding(.leading, 20)
-            .padding(.vertical, 10)
         }
         .padding(.vertical, 5)
         .background(RoundedRectangle(cornerRadius: 10)
@@ -327,6 +306,7 @@ struct DefaultInfoView: View {
 
 
 enum DefaultInfoType {
+    case number
     case month
     case kg
     case percent
@@ -340,13 +320,16 @@ struct DefaultViewCell: View {
     let type: DefaultInfoType
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             Text(title)
                 .frame(width: 110, alignment: .leading)
             Spacer()
             Text(content)
                 .foregroundColor(.systemBlue)
             switch type{
+            case DefaultInfoType.number:
+                Text("번")
+                    .foregroundColor(.systemBlue)
             case DefaultInfoType.month:
                 Text("개월")
             case DefaultInfoType.kg:
@@ -358,9 +341,9 @@ struct DefaultViewCell: View {
             case DefaultInfoType.other:
                 Text("")
             }
-            Spacer()
         }
         .font(.Dash.title1)
+        .padding(.trailing, 20)
     }
 }
 
@@ -383,6 +366,7 @@ struct GradeCell: View {
             Spacer()
             Text(content)
                 .font(.Dash.title0)
+                .foregroundColor(.systemBlue)
             Spacer()
         }
         
@@ -390,6 +374,8 @@ struct GradeCell: View {
 }
 
 struct GradeView: View {
+    @EnvironmentObject var infoViewModel: InfoViewModel
+    
     var screen: CGSize
     let price = 32750
     var body: some View {
@@ -398,13 +384,15 @@ struct GradeView: View {
             HStack {
                 Text("이력번호")
                 Spacer()
-                Text("002 1446 3577 2")
-                    .foregroundColor(.systemBlue)
-                Spacer()
+                if infoViewModel.defaultInfo.count != 0 {
+                    Text(infoViewModel.defaultInfo[0].historyNum)
+                        .foregroundColor(.systemBlue)
+                        .padding(.trailing, 20)
+                }
             }
             .padding(.horizontal)
             .padding(.vertical, 5)
-            .font(.Dash.title1)
+            .font(.Dash.title25)
             .background(RoundedRectangle(cornerRadius: 50)
                 .fill(Color.componentBg)
                 .overlay(
@@ -416,7 +404,7 @@ struct GradeView: View {
                 Text("낙찰단가")
                     .padding(.vertical, 10)
                     .frame(width: 122)
-                    .font(.Dash.title3)
+                    .font(.Dash.title25)
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(Color.white)
                         .overlay(
@@ -424,10 +412,12 @@ struct GradeView: View {
                                 .strokeBorder(Color.border, lineWidth: 4)
                         ))
                 Spacer()
-                Text("\(price)/kg")
-                    .font(.Dash.title30)
-                    .foregroundColor(.systemBlue)
-                Spacer()
+                if !infoViewModel.defaultInfo.isEmpty {
+                    Text("\(infoViewModel.defaultInfo[0].bidPrice)/kg")
+                        .font(.Dash.title30)
+                        .foregroundColor(.systemBlue)
+                    Spacer()
+                }
             }
             .padding(.vertical, 15)
             .padding(.horizontal, 25)
@@ -453,10 +443,12 @@ struct GradeView: View {
                                     .strokeBorder(Color.border, lineWidth: 4)
                             ))
                     Spacer()
-                    Text("1+")
-                        .foregroundColor(.systemBlue)
-                        .font(.Dash.title50)
-                    Spacer()
+                    if !infoViewModel.gradeInfo.isEmpty {
+                        Text(infoViewModel.gradeInfo[0].aiGrade)
+                            .foregroundColor(.systemBlue)
+                            .font(.Dash.title50)
+                        Spacer()
+                    }
                 }
                 HStack {
                     Text("최종등급")
@@ -470,10 +462,12 @@ struct GradeView: View {
                                     .strokeBorder(Color.border, lineWidth: 4)
                             ))
                     Spacer()
-                    Text("1+")
-                        .foregroundColor(.systemBlue)
-                        .font(.Dash.title50)
-                    Spacer()
+                    if !infoViewModel.gradeInfo.isEmpty {
+                        Text(infoViewModel.gradeInfo[0].finalGrade)
+                            .foregroundColor(.systemBlue)
+                            .font(.Dash.title50)
+                        Spacer()
+                    }
                 }
                 
             }
@@ -491,33 +485,28 @@ struct GradeView: View {
 }
 
 struct GradeInfoView: View {
+    @EnvironmentObject var infoViewModel: InfoViewModel
     var screen: CGSize
     var body: some View {
-//        VStack {
-//            HStack {
-//                Text("AI 등급")
-//                Text("1++")
-//                Text("최종 등급")
-//                Text("1++")
-//            }
-//        }
-        VStack(spacing: 5) {
-            GradeCell(title: "육질등급", content: "1+")
-            GradeCell(title: "근내지방도", content: "1+")
-            GradeCell(title: "육색", content: "1+")
-            GradeCell(title: "지방색", content: "1+")
-            GradeCell(title: "조직감", content: "1+")
-            GradeCell(title: "성숙도", content: "1")
+        if !infoViewModel.gradeInfo.isEmpty {
+            VStack(spacing: 5) {
+                GradeCell(title: "육질등급", content: infoViewModel.gradeInfo[0].meatQuality)
+                GradeCell(title: "근내지방도", content: infoViewModel.gradeInfo[0].fatGrade)
+                GradeCell(title: "육색", content: infoViewModel.gradeInfo[0].color)
+                GradeCell(title: "지방색", content: infoViewModel.gradeInfo[0].fatColor)
+                GradeCell(title: "조직감", content: infoViewModel.gradeInfo[0].organization)
+                GradeCell(title: "성숙도", content: infoViewModel.gradeInfo[0].maturity)
+            }
+            .padding(.horizontal, 24)
+            .padding(.vertical, 18)
+            .background(RoundedRectangle(cornerRadius: 10)
+                .fill(Color.componentBg)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .strokeBorder(Color.border, lineWidth: 4)
+                ))
+            .frame(maxWidth: screen.width/4)
         }
-        .padding(.horizontal, 24)
-        .padding(.vertical, 18)
-        .background(RoundedRectangle(cornerRadius: 10)
-            .fill(Color.componentBg)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(Color.border, lineWidth: 4)
-            ))
-        .frame(maxWidth: screen.width/4)
     }
 }
 
@@ -569,26 +558,25 @@ struct ProgressView: View {
     
     var body: some View {
         Canvas { context, size in
-            let total = slices.reduce(0) { $0 + $1.0 }
+//            let total = slices.reduce(0) { $0 + $1.0 }
+            let total:Double = 300.0
             context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
             var pieContext = context
             pieContext.rotate(by: .degrees(-90))
-            let radius = min(size.width, size.height) * 0.48
+            let radius = min(size.width, size.height) * 0.5
             var startAngle = Angle.zero
-            for (value, color) in slices {
-                let angle = Angle(degrees: 360 * (value / total))
-                let endAngle = startAngle + angle
-                let path = Path { p in
-                    p.move(to: .zero)
-                    p.addArc(center: .zero, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-                    p.closeSubpath()
-                }
-                pieContext.fill(path, with: .color(color))
-                startAngle = endAngle
+            
+            let angle = Angle(degrees: 360 * (slices[0].0 / total))
+            let endAngle = startAngle + angle
+            let path = Path { p in
+                p.move(to: .zero)
+                p.addArc(center: .zero, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+                p.closeSubpath()
             }
+            pieContext.fill(path, with: .color(slices[0].1))
         }
         .aspectRatio(1, contentMode: .fit)
-        .frame(maxWidth: screen.width/5)
+        .scaleEffect(1.2)
     }
 }
 struct DashboardView_Previews: PreviewProvider {
