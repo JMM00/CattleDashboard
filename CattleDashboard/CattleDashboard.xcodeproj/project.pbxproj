@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F92FFE3329FE8BCD00E02D89 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92FFE3229FE8BCD00E02D89 /* NSImage+Extension.swift */; };
 		F9411C1429E3EE41006B7BEC /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9411C1329E3EE41006B7BEC /* DashboardView.swift */; };
 		F9411C1729E3F6D0006B7BEC /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = F9411C1629E3F6D0006B7BEC /* SwiftPieChart */; };
 		F96C47BD29E0118400A0FC30 /* CattleDashboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47BC29E0118400A0FC30 /* CattleDashboardApp.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F92FFE3229FE8BCD00E02D89 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		F9411C1329E3EE41006B7BEC /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		F96C47B929E0118400A0FC30 /* CattleDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CattleDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96C47BC29E0118400A0FC30 /* CattleDashboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CattleDashboardApp.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				F96C47ED29E02F1C00A0FC30 /* HistoryDataManager.swift */,
 				F9E1F2AC29F9900300F1A1E4 /* InfoModel.swift */,
 				F9E1F2AE29F991C400F1A1E4 /* InfoViewModel.swift */,
+				F92FFE3229FE8BCD00E02D89 /* NSImage+Extension.swift */,
 				F9B282D129E95558000968A2 /* PriceDataManager.swift */,
 				F96C47EF29E02F5500A0FC30 /* Model.swift */,
 				F9E1F2AA29F95DC700F1A1E4 /* CattleModel.swift */,
@@ -228,6 +231,7 @@
 				F9B282D429E955DD000968A2 /* PriceModel.swift in Sources */,
 				F9E1F2AD29F9900300F1A1E4 /* InfoModel.swift in Sources */,
 				F99B360E29F0853700ECC247 /* Color+Extension.swift in Sources */,
+				F92FFE3329FE8BCD00E02D89 /* NSImage+Extension.swift in Sources */,
 				F9B282D629E9564F000968A2 /* TestContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

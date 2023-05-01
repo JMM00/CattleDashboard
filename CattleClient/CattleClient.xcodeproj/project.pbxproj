@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F904C10529FD03DB004B13DB /* CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C10429FD03DB004B13DB /* CameraPicker.swift */; };
+		F904C10729FD03F6004B13DB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C10629FD03F6004B13DB /* MainViewController.swift */; };
+		F904C10929FD0400004B13DB /* PhotoPicker+MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C10829FD0400004B13DB /* PhotoPicker+MainViewController.swift */; };
+		F904C10B29FD0419004B13DB /* ImagePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C10A29FD0419004B13DB /* ImagePredictor.swift */; };
+		F904C10D29FD042A004B13DB /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C10C29FD042A004B13DB /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
+		F904C10F29FD0437004B13DB /* VNClassificationObservation+confidenceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C10E29FD0437004B13DB /* VNClassificationObservation+confidenceString.swift */; };
+		F904C11129FD0460004B13DB /* Converted_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F904C11029FD0460004B13DB /* Converted_model.mlmodel */; };
 		F96C47A329E0116400A0FC30 /* CattleClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47A229E0116400A0FC30 /* CattleClientApp.swift */; };
 		F96C47A529E0116400A0FC30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47A429E0116400A0FC30 /* ContentView.swift */; };
 		F96C47A729E0116500A0FC30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96C47A629E0116500A0FC30 /* Assets.xcassets */; };
@@ -22,9 +29,19 @@
 		F96C47E829E017ED00A0FC30 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F96C47E729E017ED00A0FC30 /* FirebaseStorageCombine-Community */; };
 		F96C47EA29E0186D00A0FC30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F96C47E929E0186D00A0FC30 /* GoogleService-Info.plist */; };
 		F96C47EC29E0193400A0FC30 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C47EB29E0193400A0FC30 /* ImagePicker.swift */; };
+		F9DAB5FD29FB8CF9003EC7C4 /* MLMultiArray+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DAB5FC29FB8CF9003EC7C4 /* MLMultiArray+Image.swift */; };
+		F9DAB5FF29FB8D64003EC7C4 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DAB5FE29FB8D64003EC7C4 /* UIImage+Extension.swift */; };
+		F9E1F2B629FA81E700F1A1E4 /* CoreMLClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1F2B529FA81E700F1A1E4 /* CoreMLClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F904C10429FD03DB004B13DB /* CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPicker.swift; sourceTree = "<group>"; };
+		F904C10629FD03F6004B13DB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F904C10829FD0400004B13DB /* PhotoPicker+MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoPicker+MainViewController.swift"; sourceTree = "<group>"; };
+		F904C10A29FD0419004B13DB /* ImagePredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePredictor.swift; sourceTree = "<group>"; };
+		F904C10C29FD042A004B13DB /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
+		F904C10E29FD0437004B13DB /* VNClassificationObservation+confidenceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNClassificationObservation+confidenceString.swift"; sourceTree = "<group>"; };
+		F904C11029FD0460004B13DB /* Converted_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Converted_model.mlmodel; sourceTree = "<group>"; };
 		F96C479F29E0116400A0FC30 /* CattleClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CattleClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96C47A229E0116400A0FC30 /* CattleClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CattleClientApp.swift; sourceTree = "<group>"; };
 		F96C47A429E0116400A0FC30 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +49,9 @@
 		F96C47A929E0116500A0FC30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F96C47E929E0186D00A0FC30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F96C47EB29E0193400A0FC30 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F9DAB5FC29FB8CF9003EC7C4 /* MLMultiArray+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Image.swift"; sourceTree = "<group>"; };
+		F9DAB5FE29FB8D64003EC7C4 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		F9E1F2B529FA81E700F1A1E4 /* CoreMLClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +93,20 @@
 		F96C47A129E0116400A0FC30 /* CattleClient */ = {
 			isa = PBXGroup;
 			children = (
+				F9E1F2B229FA7D3E00F1A1E4 /* Resources */,
 				F96C47E929E0186D00A0FC30 /* GoogleService-Info.plist */,
 				F96C47A229E0116400A0FC30 /* CattleClientApp.swift */,
 				F96C47A429E0116400A0FC30 /* ContentView.swift */,
 				F96C47EB29E0193400A0FC30 /* ImagePicker.swift */,
+				F9E1F2B529FA81E700F1A1E4 /* CoreMLClass.swift */,
+				F9DAB5FC29FB8CF9003EC7C4 /* MLMultiArray+Image.swift */,
+				F9DAB5FE29FB8D64003EC7C4 /* UIImage+Extension.swift */,
+				F904C10429FD03DB004B13DB /* CameraPicker.swift */,
+				F904C10629FD03F6004B13DB /* MainViewController.swift */,
+				F904C10829FD0400004B13DB /* PhotoPicker+MainViewController.swift */,
+				F904C10A29FD0419004B13DB /* ImagePredictor.swift */,
+				F904C10C29FD042A004B13DB /* CGImagePropertyOrientation+UIImageOrientation.swift */,
+				F904C10E29FD0437004B13DB /* VNClassificationObservation+confidenceString.swift */,
 				F96C47A629E0116500A0FC30 /* Assets.xcassets */,
 				F96C47A829E0116500A0FC30 /* Preview Content */,
 			);
@@ -89,6 +119,14 @@
 				F96C47A929E0116500A0FC30 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F9E1F2B229FA7D3E00F1A1E4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F904C11029FD0460004B13DB /* Converted_model.mlmodel */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,8 +215,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F96C47EC29E0193400A0FC30 /* ImagePicker.swift in Sources */,
+				F9DAB5FF29FB8D64003EC7C4 /* UIImage+Extension.swift in Sources */,
 				F96C47A529E0116400A0FC30 /* ContentView.swift in Sources */,
+				F904C10F29FD0437004B13DB /* VNClassificationObservation+confidenceString.swift in Sources */,
+				F9DAB5FD29FB8CF9003EC7C4 /* MLMultiArray+Image.swift in Sources */,
+				F904C10D29FD042A004B13DB /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
+				F904C10529FD03DB004B13DB /* CameraPicker.swift in Sources */,
+				F904C10B29FD0419004B13DB /* ImagePredictor.swift in Sources */,
 				F96C47A329E0116400A0FC30 /* CattleClientApp.swift in Sources */,
+				F904C10729FD03F6004B13DB /* MainViewController.swift in Sources */,
+				F904C10929FD0400004B13DB /* PhotoPicker+MainViewController.swift in Sources */,
+				F9E1F2B629FA81E700F1A1E4 /* CoreMLClass.swift in Sources */,
+				F904C11129FD0460004B13DB /* Converted_model.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -289,7 +337,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

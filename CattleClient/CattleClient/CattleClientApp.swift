@@ -21,9 +21,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct CattleClientApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    @StateObject var mainViewcontroller = MainViewController()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(mainViewcontroller)
         }
     }
 }

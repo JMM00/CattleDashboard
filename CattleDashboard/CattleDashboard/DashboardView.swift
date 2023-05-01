@@ -19,6 +19,9 @@ struct DashboardView: View {
                 (128, .chart2)
             ]
     
+    @State var nsImage = NSImage()
+    @State var isHidden = true
+    
     var body: some View {
         GeometryReader { screen in
             VStack(spacing: 10) {
@@ -34,7 +37,7 @@ struct DashboardView: View {
                             Text("포크빌 축산물 공판장")
                                 .font(.Dash.largeTitle)
                         }
-                        .padding()
+                        .padding(5)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(RoundedRectangle(cornerRadius: 12)
                             .fill(Color.white)
@@ -46,17 +49,46 @@ struct DashboardView: View {
                         .padding(.top, 20)
                         
                         HStack{
-                            ZStack (alignment: .bottomTrailing){
-                                Image("1")
+                            ZStack (alignment: .topTrailing){
+                                Image("\(infoViewModel.index+1)")
                                     .resizable()
                                     .scaledToFit()
                                     .clipShape(Circle())
-                                    .scaleEffect(1.3)
+                                    .frame(width: 500, height: 500)
+//                                    .scaleEffect(1.3)
+                                
                                 Image("selected")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 200)
-                                    .padding(.bottom, -40)
+                                    .padding(.trailing, 100)
+                                    .padding(.top, 300)
+                                
+                                
+                                
+//                                if !infoViewModel.defaultInfo.isEmpty {
+//                                    let _ = infoViewModel.downloadImage(urlString: infoViewModel.defaultInfo[infoViewModel.index].url) { image in
+//                                        nsImage = image!
+//
+//                                        self.isHidden = false
+//
+//                                    }
+//                                    VStack {
+//                                        Image(nsImage: self.nsImage)
+//                                            .resizable()
+//                                            .clipShape(Circle())
+//                                    }
+//                                    .frame(maxWidth: 300, maxHeight: 300)
+//                                    .foregroundColor(.red)
+//
+//                                    if !isHidden {
+//                                        Image("selected")
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 200)
+//                                            .padding(.bottom, -40)
+//                                    }
+//                                }
                             }
                             .frame(width: 350, height: 350)
                             DefaultInfoView(screen: screen.size)
@@ -64,10 +96,9 @@ struct DashboardView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .padding()
                     }
-                    VStack(alignment: .leading, spacing: 7){
+                    VStack(alignment: .leading, spacing: 10){
                         Text("30일간 시세")
                             .font(.Dash.title1)
-                            .padding(.vertical, 6)
                             .frame(width: 200)
                             .background(RoundedRectangle(cornerRadius: 50)
                                 .fill(Color.white)
@@ -75,7 +106,10 @@ struct DashboardView: View {
                                     RoundedRectangle(cornerRadius: 50)
                                         .strokeBorder(Color.border, lineWidth: 2)
                                 ))
-                        ChartView(screen: screen.size, postings: priceManager.priceArr_0)
+                            .padding(.top, 10)
+                        if !infoViewModel.gradeInfo.isEmpty {
+                            ChartView(screen: screen.size, postings: priceManager.priceArr[gradeConverter(finalGrade: infoViewModel.gradeInfo[infoViewModel.index].aiGrade)])
+                        }
                         Text("7일간 시세")
                             .font(.Dash.title1)
                             .padding(.vertical, 6)
@@ -86,30 +120,36 @@ struct DashboardView: View {
                                     RoundedRectangle(cornerRadius: 50)
                                         .strokeBorder(Color.border, lineWidth: 2)
                                 ))
-                        ChartView_week(screen: screen.size, postings: priceManager.priceArr_0)
+                        if !infoViewModel.gradeInfo.isEmpty {
+                            ChartView_week(screen: screen.size, postings: priceManager.priceArr[gradeConverter(finalGrade: infoViewModel.gradeInfo[infoViewModel.index].aiGrade)])
+                        }
+                            
                     }
+                    .padding(.bottom, 20)
                     .onAppear() {
 //                        priceManager.getSearchResults()
                         historyManager.getCattleResults(cattleNo: "002142700199")
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding(.horizontal, 34)
                     .padding(.vertical, 30)
+                    .frame(maxHeight: .infinity)
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(Color.componentBg)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
                                 .strokeBorder(Color.border, lineWidth: 4)
                         ))
-                    
                 }
                 
                 HStack {
                     GradeView(screen: screen.size)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     
                     GradeInfoView(screen: screen.size)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     
                     HistoryView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     
                     VStack(alignment: .center) {
                         HStack {
@@ -124,16 +164,19 @@ struct DashboardView: View {
                                             .strokeBorder(Color.border, lineWidth: 2)
                                     ))
                             Spacer()
-                            Text("42.5%")
-                                .font(.Dash.title0)
-                                .foregroundColor(.systemBlue)
-                            Spacer()
+                            if !infoViewModel.defaultInfo.isEmpty {
+                                Text("\(Int(round(Double(infoViewModel.index+1)/Double(infoViewModel.defaultInfo.count) * 100)))%")
+                                    .font(.Dash.title0)
+                                    .foregroundColor(.systemBlue)
+                                Spacer()
+                            }
                         }
                         .padding(.vertical, 5)
                         ZStack(alignment: .center) {
                             Circle().foregroundColor(.chart1)
                             ProgressView(screen: screen.size, slices: data)
                         }
+                        .frame(width: 300)
                         .padding(.top, 20)
                         Text(Date().getTime())
                             .font(.Dash.title25)
@@ -156,13 +199,35 @@ struct DashboardView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .strokeBorder(Color.border, lineWidth: 4)
                         ))
+                    .onTapGesture {
+                        if infoViewModel.index + 1 < infoViewModel.defaultInfo.count {
+                            infoViewModel.index = infoViewModel.index + 1
+                            print(infoViewModel.index)
+                        }
+                    }
                 }
-                .background(Color.red)
                 .padding(.bottom, 20)
             }
+            .frame(maxWidth: screen.size.width - 50, maxHeight: screen.size.height - 50)
             .padding(20)
         }
         .background(Color.background)
+    }
+    func gradeConverter(finalGrade: String) -> Int{
+        switch finalGrade {
+        case "1++":
+            return 0
+        case "1+":
+            return 1
+        case "1":
+            return 2
+        case "2":
+            return 3
+        case "3":
+            return 4
+        default:
+            return 0
+        }
     }
 }
 
@@ -170,9 +235,9 @@ struct HistoryView: View {
     @EnvironmentObject var historyManager: HistoryDataManager
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 15) {
             Text("축산물 이력")
-                .font(.Dash.title1)
+                .font(.Dash.title25)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 13)
                 .background(RoundedRectangle(cornerRadius: 50)
@@ -181,11 +246,11 @@ struct HistoryView: View {
                         RoundedRectangle(cornerRadius: 50)
                             .strokeBorder(Color.border, lineWidth: 2)
                     ))
+                .padding(.vertical, 10)
             HStack {
                 Image("birth")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 75)
+                    .frame(width: 75, height: 75)
                 Spacer()
                 VStack {
                     if historyManager.cattleEntityInfo.count != 0 {
@@ -196,6 +261,7 @@ struct HistoryView: View {
                             .foregroundColor(.systemBlue)
                     }
                 }
+                .font(.Dash.title25)
                 .onAppear() {
                     print(historyManager.entityInfo.count)
                 }
@@ -205,8 +271,7 @@ struct HistoryView: View {
             HStack {
                 Image("cut")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 75)
+                    .frame(width: 75, height: 75)
                 Spacer()
                 if historyManager.cattleEntityInfo.count != 0 {
                     VStack {
@@ -214,6 +279,7 @@ struct HistoryView: View {
                         Text(String(historyManager.cattleEntityInfo[0].butcheryYmd))
                             .foregroundColor(.systemBlue)
                     }
+                    .font(.Dash.title25)
                     Spacer()
                 }
             }
@@ -221,13 +287,12 @@ struct HistoryView: View {
             HStack {
                 Image("Vaccination")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 75)
+                    .frame(width: 75, height: 75)
                 
                 Spacer()
                 
                 if historyManager.cattleEntityInfo.count != 0 {
-                    HStack(spacing: 20){
+                    HStack(spacing: 10){
                         VStack {
                             Text("구제역")
                             Text(historyManager.cattleEntityInfo[0].vaccineorder)
@@ -244,9 +309,11 @@ struct HistoryView: View {
                                 .foregroundColor(.systemBlue)
                         }
                     }
+                    .font(.Dash.title25)
                 }
                 Spacer()
             }
+            .padding(.bottom, 20)
         }
         .padding()
         .font(.Dash.title1)
@@ -270,15 +337,15 @@ struct DefaultInfoView: View {
                 .font(.Dash.title1)
                 .padding(3)
                 .padding(.horizontal, 40)
-                .background(RoundedRectangle(cornerRadius: 12)
+                .background(RoundedRectangle(cornerRadius: 50)
                     .fill(Color.white)
                     .overlay(
                         RoundedRectangle(cornerRadius: 50)
                             .strokeBorder(Color.border, lineWidth: 2)
                     ))
                 .padding(8)
-            if infoViewModel.defaultInfo.count != 0 {
-                VStack {
+            if infoViewModel.defaultInfo.count != 0 && historyManager.cattleEntityInfo.count != 0 {
+                VStack(spacing: 10) {
                     DefaultViewCell(title: "지육번호", content: infoViewModel.defaultInfo[0].number, type: .number)
                     DefaultViewCell(title: "품종", content: historyManager.cattleEntityInfo[0].lsTypeNm, type: .other)
                     DefaultViewCell(title: "성별", content: historyManager.cattleEntityInfo[0].sexNm, type: .other)
@@ -292,7 +359,7 @@ struct DefaultInfoView: View {
                 .padding(.vertical, 10)
             }
         }
-        .padding(.vertical, 5)
+//        .padding(.vertical, 10)
         .background(RoundedRectangle(cornerRadius: 10)
             .fill(Color.componentBg)
             .overlay(
@@ -322,7 +389,7 @@ struct DefaultViewCell: View {
     var body: some View {
         HStack(spacing: 0) {
             Text(title)
-                .frame(width: 110, alignment: .leading)
+                .frame(width: 130, alignment: .leading)
             Spacer()
             Text(content)
                 .foregroundColor(.systemBlue)
@@ -342,7 +409,7 @@ struct DefaultViewCell: View {
                 Text("")
             }
         }
-        .font(.Dash.title1)
+        .font(.Dash.title25)
         .padding(.trailing, 20)
     }
 }
@@ -355,7 +422,7 @@ struct GradeCell: View {
         HStack {
             Text(title)
                 .padding(.vertical, 11)
-                .frame(width: 120)
+                .frame(width: 150)
                 .font(.Dash.title1)
                 .background(RoundedRectangle(cornerRadius: 50)
                     .fill(Color.white)
@@ -403,7 +470,7 @@ struct GradeView: View {
             HStack {
                 Text("낙찰단가")
                     .padding(.vertical, 10)
-                    .frame(width: 122)
+                    .frame(width: 130)
                     .font(.Dash.title25)
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(Color.white)
@@ -413,7 +480,7 @@ struct GradeView: View {
                         ))
                 Spacer()
                 if !infoViewModel.defaultInfo.isEmpty {
-                    Text("\(infoViewModel.defaultInfo[0].bidPrice)/kg")
+                    Text("32750/kg")
                         .font(.Dash.title30)
                         .foregroundColor(.systemBlue)
                     Spacer()
@@ -428,13 +495,16 @@ struct GradeView: View {
                         .strokeBorder(Color.border, lineWidth: 4)
                 ))
             
-            VStack {
-                Divider()
-                    .padding(.top, 22)
+            Rectangle()
+                .fill(Color.border)
+                .frame(height: 2)
+                .padding(.vertical, 20)
+            
+            VStack(spacing: 5) {
                 HStack {
                     Text("AI 등급")
                         .padding(.vertical, 10)
-                        .frame(width: 122)
+                        .frame(width: 150)
                         .font(.Dash.title30)
                         .background(RoundedRectangle(cornerRadius: 10)
                             .fill(Color.white)
@@ -444,7 +514,7 @@ struct GradeView: View {
                             ))
                     Spacer()
                     if !infoViewModel.gradeInfo.isEmpty {
-                        Text(infoViewModel.gradeInfo[0].aiGrade)
+                        Text(infoViewModel.gradeInfo[infoViewModel.index].aiGrade)
                             .foregroundColor(.systemBlue)
                             .font(.Dash.title50)
                         Spacer()
@@ -453,7 +523,7 @@ struct GradeView: View {
                 HStack {
                     Text("최종등급")
                         .padding(.vertical, 10)
-                        .frame(width: 122)
+                        .frame(width: 150)
                         .font(.Dash.title30)
                         .background(RoundedRectangle(cornerRadius: 10)
                             .fill(Color.white)
@@ -463,7 +533,7 @@ struct GradeView: View {
                             ))
                     Spacer()
                     if !infoViewModel.gradeInfo.isEmpty {
-                        Text(infoViewModel.gradeInfo[0].finalGrade)
+                        Text(infoViewModel.gradeInfo[infoViewModel.index].finalGrade)
                             .foregroundColor(.systemBlue)
                             .font(.Dash.title50)
                         Spacer()
@@ -479,6 +549,12 @@ struct GradeView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .strokeBorder(Color.border, lineWidth: 4)
                 ))
+            .onTapGesture {
+                if infoViewModel.index - 1 >= 0 {
+                    infoViewModel.index = infoViewModel.index - 1
+                    print(infoViewModel.index)
+                }
+            }
         }
         .frame(width: screen.width/4)
     }
@@ -490,12 +566,12 @@ struct GradeInfoView: View {
     var body: some View {
         if !infoViewModel.gradeInfo.isEmpty {
             VStack(spacing: 5) {
-                GradeCell(title: "육질등급", content: infoViewModel.gradeInfo[0].meatQuality)
-                GradeCell(title: "근내지방도", content: infoViewModel.gradeInfo[0].fatGrade)
-                GradeCell(title: "육색", content: infoViewModel.gradeInfo[0].color)
-                GradeCell(title: "지방색", content: infoViewModel.gradeInfo[0].fatColor)
-                GradeCell(title: "조직감", content: infoViewModel.gradeInfo[0].organization)
-                GradeCell(title: "성숙도", content: infoViewModel.gradeInfo[0].maturity)
+                GradeCell(title: "육질등급", content: infoViewModel.gradeInfo[infoViewModel.index].meatQuality)
+                GradeCell(title: "근내지방도", content: infoViewModel.gradeInfo[infoViewModel.index].fatGrade)
+                GradeCell(title: "육색", content: infoViewModel.gradeInfo[infoViewModel.index].color)
+                GradeCell(title: "지방색", content: infoViewModel.gradeInfo[infoViewModel.index].fatColor)
+                GradeCell(title: "조직감", content: infoViewModel.gradeInfo[infoViewModel.index].organization)
+                GradeCell(title: "성숙도", content: infoViewModel.gradeInfo[infoViewModel.index].maturity)
             }
             .padding(.horizontal, 24)
             .padding(.vertical, 18)
@@ -517,16 +593,18 @@ struct ChartView: View {
     
     var body: some View {
         Chart {
-            ForEach(Array(tests.enumerated()), id: \.offset) { index, posting in
+            ForEach(Array(postings.enumerated()), id: \.offset) { index, posting in
                 LineMark(
                     x: .value("x",index),
                     y: .value("y", posting)
                 )
             }
         }
+        .frame(maxHeight: .infinity)
         .foregroundStyle(.red)
-        .chartYScale(domain: (tests.min() ?? 10000)...(tests.max() ?? 40000))
-//        .chartYScale(domain: (postings.min() ?? 10000)...(postings.max() ?? 40000))
+//        .chartYScale(domain: (tests.min() ?? 10000)...(tests.max() ?? 40000))
+        .chartYScale(domain: (postings.min() ?? 10000)...(postings.max() ?? 50000))
+        .frame(height: 130)
     }
 }
 
@@ -537,7 +615,7 @@ struct ChartView_week: View {
     
     var body: some View {
         Chart {
-            ForEach(Array(tests.enumerated()), id: \.offset) { index, posting in
+            ForEach(Array(postings.enumerated()), id: \.offset) { index, posting in
                 if index < 7 {
                     LineMark(
                         x: .value("x",index),
@@ -546,37 +624,44 @@ struct ChartView_week: View {
                 }
             }
         }
+        .frame(maxHeight: .infinity)
         .foregroundStyle(.blue)
-        .chartYScale(domain: (tests.min() ?? 10000)...(tests.max() ?? 40000))
-//        .chartYScale(domain: (postings.min() ?? 10000)...(postings.max() ?? 40000))
+//        .chartYScale(domain: (tests.min() ?? 10000)...(tests.max() ?? 40000))
+        .chartYScale(domain: (postings.min() ?? 10000)...(postings.max() ?? 50000))
+        .frame(height: 130)
     }
 }
 
 struct ProgressView: View {
+    @EnvironmentObject var infoViewModel: InfoViewModel
     var screen: CGSize
     @State var slices: [(Double, Color)]
     
     var body: some View {
-        Canvas { context, size in
-//            let total = slices.reduce(0) { $0 + $1.0 }
-            let total:Double = 300.0
-            context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
-            var pieContext = context
-            pieContext.rotate(by: .degrees(-90))
-            let radius = min(size.width, size.height) * 0.5
-            var startAngle = Angle.zero
-            
-            let angle = Angle(degrees: 360 * (slices[0].0 / total))
-            let endAngle = startAngle + angle
-            let path = Path { p in
-                p.move(to: .zero)
-                p.addArc(center: .zero, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-                p.closeSubpath()
+        if !infoViewModel.defaultInfo.isEmpty {
+            Canvas { context, size in
+                //            let total = slices.reduce(0) { $0 + $1.0 }
+                print(infoViewModel.defaultInfo.count)
+                let total = Double(infoViewModel.defaultInfo.count)
+                context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
+                var pieContext = context
+                pieContext.rotate(by: .degrees(-90))
+                let radius = min(size.width, size.height) * 0.5
+                var startAngle = Angle.zero
+                print(Double(infoViewModel.defaultInfo[infoViewModel.index].number))
+                let angle = Angle(degrees: 360 * Double(infoViewModel.index + 1) / total)
+                let endAngle = startAngle + angle
+                let path = Path { p in
+                    p.move(to: .zero)
+                    p.addArc(center: .zero, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+                    p.closeSubpath()
+                }
+                pieContext.fill(path, with: .color(slices[0].1))
+                
             }
-            pieContext.fill(path, with: .color(slices[0].1))
+            .aspectRatio(1, contentMode: .fit)
+            .scaleEffect(1.2)
         }
-        .aspectRatio(1, contentMode: .fit)
-        .scaleEffect(1.2)
     }
 }
 struct DashboardView_Previews: PreviewProvider {

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var mainViewController: MainViewController
     @State var entityNumber = ""
     
     @State private var showingImagePicker = false
@@ -25,11 +26,13 @@ struct ContentView: View {
             
             Button(action: {
                 self.showingImagePicker.toggle()
+//                mainViewController.selectPhoto()
             }, label: {
                 Text("사진 선택하기")
-            }).sheet(isPresented: $showingImagePicker) {
+            })
+            .sheet(isPresented: $showingImagePicker) {
                 ImagePicker(sourceType: .photoLibrary) { (image) in
-                    
+
                     self.pickedImage = Image(uiImage: image)
                     print(image)
                 }
@@ -38,6 +41,9 @@ struct ContentView: View {
                 .frame(height:300)
         }
         .padding()
+        .onAppear() {
+            
+        }
     }
 }
 

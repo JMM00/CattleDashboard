@@ -22,6 +22,8 @@ class PriceDataManager: ObservableObject {
 //    등외
     @Published var priceArr_5: [Int] = []
     
+    @Published var priceArr = [[Int]](repeating: [], count: 6)
+    
     var dateArray: [String] = []
     var sexCode = SexCode.female.rawValue
     
@@ -76,21 +78,27 @@ class PriceDataManager: ObservableObject {
                     decoded.body.items.item.forEach { item in
                         switch item.gradeNm {
                         case CowGrade.onePP.rawValue:
+                            self.priceArr[0].append(item.cTotAmt)
                             self.priceArr_0.append(item.cTotAmt)
                             break
                         case CowGrade.oneP.rawValue:
+                            self.priceArr[1].append(item.cTotAmt)
                             self.priceArr_1.append(item.cTotAmt)
                             break
                         case CowGrade.one.rawValue:
+                            self.priceArr[2].append(item.cTotAmt)
                             self.priceArr_2.append(item.cTotAmt)
                             break
                         case CowGrade.two.rawValue:
+                            self.priceArr[3].append(item.cTotAmt)
                             self.priceArr_3.append(item.cTotAmt)
                             break
                         case CowGrade.three.rawValue:
+                            self.priceArr[4].append(item.cTotAmt)
                             self.priceArr_4.append(item.cTotAmt)
                             break
                         case CowGrade.other.rawValue:
+                            self.priceArr[5].append(item.cTotAmt)
                             self.priceArr_5.append(item.cTotAmt)
                             break
                         default:

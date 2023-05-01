@@ -34,8 +34,7 @@ struct DefaultInfo: Identifiable, Codable, Equatable, Hashable {
     var predictedBreedingRate: String
     var totalWeight: String
     var unitPrice: String
-//    var bidPrice: String
-    var url: String
+    var bidPrice: String
     
     var dictionary: [String: Any] {
         let data = (try? JSONEncoder().encode(self)) ?? Data()

@@ -7,9 +7,12 @@
 
 import Foundation
 import SwiftUI
+
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseStorage
+import FirebaseStorageCombineSwift
 import XMLCoder
 
 class InfoViewModel: ObservableObject {
@@ -23,7 +26,8 @@ class InfoViewModel: ObservableObject {
     @Published var gradeInfo: [GradeInfo] = []
     @Published var defaultInfo: [DefaultInfo] = []
     
-    var index = 0
+    @Published var index = 0
+    @Published var currImage = NSImage()
     private let db = Firestore.firestore()
     
     init() {
@@ -32,10 +36,18 @@ class InfoViewModel: ObservableObject {
             print(gradeInfo)
         }
         fetchDefaultAll { defaultInfo in
-            self.defaultInfo = defaultInfo
-            self.cattleNo = defaultInfo[self.index].historyNum
-            self.getCattleResults(cattleNo: self.cattleNo)
-            print(defaultInfo)
+            if defaultInfo.count != 0 {
+                self.defaultInfo = defaultInfo
+                self.cattleNo = defaultInfo[0].historyNum
+                self.getCattleResults(cattleNo: self.cattleNo)
+                print(defaultInfo)
+                
+                self.downloadImage(urlString: defaultInfo[0].url) { image in
+                    if let image = image {
+                        self.currImage = image
+                    }
+                }
+            }
         }
         
     }
@@ -162,5 +174,18 @@ class InfoViewModel: ObservableObject {
             }
         }
         task.resume()
+    }
+    
+    func downloadImage(urlString: String, completion: @escaping (NSImage?) -> Void) {
+        let storageReference = Storage.storage().reference(forURL: urlString)
+        let megaByte = Int64(1 * 500 * 500)
+        
+        storageReference.getData(maxSize: megaByte) { data, error in
+            guard let imageData = data else {
+                completion(nil)
+                return
+            }
+            completion(NSImage(data: imageData))
+        }
     }
 }
